@@ -22,6 +22,10 @@ RUN mkdir -p /opt && \
     echo Spark ${SPARK_VERSION} installed in /opt
 
 # add scripts and update spark default config
-ADD common.sh spark-master spark-worker /
+COPY common.sh /
+COPY spark-master.sh /
+COPY spark-worker.sh /
+#COPY spark-defaults.conf /opt/spark/conf/
+#ADD common.sh spark-master.sh spark-worker.sh /
 ADD spark-defaults.conf /opt/spark/conf/spark-defaults.conf
 ENV PATH $PATH:/opt/spark/bin

@@ -14,8 +14,9 @@ spec:
     spec:
       containers:
         - name: spark-worker
-          image: spark-hadoop:3.2.0
-          command: ["/spark-worker"]
+          image: heleonu/spark-master-worker:1
+          imagePullPolicy: "IfNotPresent"
+          command: ["/bin/bash", "/spark-worker.sh"]
           ports:
             - containerPort: 8081
           resources:
